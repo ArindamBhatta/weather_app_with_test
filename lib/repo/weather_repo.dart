@@ -1,37 +1,22 @@
 // ignore_for_file: avoid_print
 
-import 'package:http/http.dart' as http;
-import 'package:weather_app/constant/api_end_points.dart';
-import 'package:weather_app/models/geo_data.dart';
+import 'package:weather_app/models/wether_model.dart';
+import 'package:weather_app/service/weather_service.dart';
 
-class WeatherRepo {
-  static Future<void> getGeoData(String city) async {
-    final Uri uri = Uri.parse(
-      '$baseUri/geo/1.0/direct?q=$city&limit=1&appid=$apiKey',
-    );
-
+abstract class WeatherRepo {
+  static Future<WeatherModel?> getWhetherInfo(String city) async {
     try {
-      final response = await http.get(uri);
-
-      if (response.statusCode == 200) {
-        List<DataModelProperty> geoDataList = geoData(response.body);
-
-        for (var geoData in geoDataList) {
-          print(
-              'City: ${geoData.name}, Country: ${geoData.country}, Lat: ${geoData.lat}, Lon: ${geoData.lon}');
-        }
+      Map<String, dynamic>? data = await WeatherService.getWeatherData(city);
+      if (data != null) {
+        WeatherModel weather = WeatherModel.fromJson(data);
+        print(weather.main?.temp);
+        return weather;
       } else {
-        print('Failed to fetch data: ${response.statusCode}');
+        return null;
       }
-    } catch (e) {
-      print('Error fetching data: $e');
+    } catch (error) {
+      print(error);
+      return null;
     }
-  }
-
-  static Future<void> getWeatherData() async {
-    final Uri uri = Uri.parse(
-      '$baseUri/data/2.5/weather?lat=44.34&lon=10.99&appid=$apiKey',
-    );
-    print(uri);
   }
 }
