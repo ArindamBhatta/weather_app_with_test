@@ -1,26 +1,35 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app/bloc/weather_bloc.dart';
 import 'package:weather_app/pages/home_screen.dart';
-import 'package:weather_app/repo/weather_repo.dart';
 
 void main() {
-  runApp(const MyApp());
-  WeatherRepo.getWhetherInfo('london');
+  runApp(const WeatherApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class WeatherApp extends StatelessWidget {
+  const WeatherApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'whether App',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const HomePage(
-        title: 'Flutter Demo Home Page',
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => WeatherBloc(),
+        ),
+      ],
+      child: MaterialApp(
+        title: 'whether App',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: Colors.deepPurple,
+          ),
+          useMaterial3: true,
+        ),
+        home: const HomeScreen(),
       ),
     );
   }

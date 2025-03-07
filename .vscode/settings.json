@@ -1,4 +1,5 @@
 {
   "java.compile.nullAnalysis.mode": "automatic",
-  "cSpell.words": ["grnd"]
+  "cSpell.words": ["cupertino", "geolocator", "grnd"],
+  "java.configuration.updateBuildConfiguration": "interactive"
 }
