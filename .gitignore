@@ -1,8 +1,11 @@
 # Ignore Android, iOS, Web, macOS, and Windows directories
-
+macOS
+windows
+ios
 macos/
 windows/
 linux/ 
+temporary
 
 # Flutter/Dart/Pub related files
 **/doc/api/
