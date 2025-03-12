@@ -1,35 +1,4 @@
-# Ignore Android, iOS, Web, macOS, and Windows directories
-macOS
-windows
-ios
-macos/
-windows/
-linux/ 
-temporary
-
-# Flutter/Dart/Pub related files
-**/doc/api/
-**/ios/Flutter/.last_build_id
-.dart_tool/
-.flutter-plugins
-.flutter-plugins-dependencies
-.pub-cache/
-.pub/
-build/
-pubspec.lock # Ignore pubspec.lock
-
-# Firebase files (adjust paths as needed)
-google-services.json # Android Firebase config
-GoogleService-Info.plist # iOS Firebase config
-firebase_options.dart # Generated firebase options file
-lib/firebase_options.dart #if it is stored in lib folder
-
-# Ignore build artifacts for other platforms
-**/android/app/debug
-**/android/app/profile
-**/android/app/release
-
-# Miscellaneous files to ignore
+# Miscellaneous
 *.class
 *.log
 *.pyc
@@ -41,15 +10,53 @@ lib/firebase_options.dart #if it is stored in lib folder
 .svn/
 migrate_working_dir/
 
-# IntelliJ related files
+# IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
 
-# Symbolication and Obfuscation related
+# The .vscode folder contains launch configuration and tasks you configure in
+# VS Code which you may wish to be included in version control, so this line
+# is commented out by default.
+#.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+/build/
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# Symbolication related
 app.*.symbols
+
+# Obfuscation related
 app.*.map.json
 
-# Ignore any additional files for temporary work or cache
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+/temp/
 pubspec.lock
+pubspec.lock
+ios/Podfile.lock
+ios/Podfile.lock
+# ios/Runner/Info.plist
+ios/Runner.xcodeproj/project.pbxproj
+node_modules/
+lib/_dump
+
+.fvm
+.gitignore
+.vscode/settings.json
+devtools_options.yaml

@@ -6,36 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:weather_app/constant/api_end_points.dart';
 
 class WeatherService {
-  // static Future<Map<String, dynamic>?> fetchLatLongUsingName(
-  //     String city) async {
-  //   final Uri uri = Uri.parse(
-  //     '$baseUri/geo/1.0/direct?q=$city&limit=1&appid=$apiKey',
-  //   );
-
-  //   try {
-  //     final http.Response response = await http.get(uri);
-
-  //     if (response.statusCode == 200) {
-  //       List<dynamic> locationNameData = json.decode(response.body);
-
-  //       if (locationNameData.isNotEmpty) {
-  //         List<dynamic> geoData = locationNameData;
-
-  //         var geoLocation = {
-  //           'lat': geoData[0]['lat'],
-  //           'lon': geoData[0]['lon']
-  //         };
-  //         return geoLocation;
-  //       }
-  //     } else {
-  //       print('Failed to fetch location data: ${response.statusCode}');
-  //     }
-  //   } catch (e) {
-  //     print('Error fetching location data: $e');
-  //   }
-  //   return null;
-  // }
-
   static Future<Map<String, double>?> determinePosition() async {
     bool serviceEnabled;
     LocationPermission permission;
